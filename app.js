@@ -38,16 +38,15 @@ if (process.env.NODE_ENV === "production") {
 
 // Middleware
 app.use(express.json());
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://www.tidyteddy.com.au",
-      "https://tidyteddy-4h4hwazjj-jennifer-devops-projects.vercel.app/",
-    ],
-    credentials: true,
-  }),
-);
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://www.tidyteddy.com.au",
+    "https://tidyteddy.com.au",
+    "https://tidyteddy.vercel.app"
+  ],
+  credentials: true
+}));
 app.use(express.urlencoded({ extended: true }));
 
 async function initializeAddOnData(conn) {
