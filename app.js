@@ -40,7 +40,11 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://www.tidyteddy.com.au"],
+    origin: [
+      "http://localhost:5173",
+      "https://www.tidyteddy.com.au",
+      "https://tidyteddy-4h4hwazjj-jennifer-devops-projects.vercel.app/",
+    ],
     credentials: true,
   }),
 );
