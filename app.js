@@ -185,11 +185,11 @@ async function startServer() {
     app.use("/", apiRoutes);
 
     // Serve frontend
-    app.use(express.static(path.join(__dirname, "../frontend/dist")));
+    // app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-    });
+    // app.get("*", (req, res) => {
+    //   res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+    // });
 
     // Default route for unmatched paths
     app.all("*", (req, res) => {
