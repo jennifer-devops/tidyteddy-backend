@@ -38,7 +38,12 @@ if (process.env.NODE_ENV === "production") {
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://www.tidyteddy.com.au"],
+    credentials: true,
+  }),
+);
 app.use(express.urlencoded({ extended: true }));
 
 async function initializeAddOnData(conn) {
@@ -208,13 +213,13 @@ async function startServer() {
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server running on: ${PORT}`);
     });
-    
-  try {
-    await initializeDatabase();
-    console.log("Database initialized");
-  } catch (error) {
-    console.error("Database init failed:", error);
-  }
+
+    try {
+      await initializeDatabase();
+      console.log("Database initialized");
+    } catch (error) {
+      console.error("Database init failed:", error);
+    }
   } catch (error) {
     console.error("Failed to start server:", error);
   }
