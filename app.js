@@ -160,8 +160,6 @@ async function initializeDatabase() {
 // Start the server
 async function startServer() {
   try {
-    await initializeDatabase();
-
     app.get("/config", (req, res) => {
       res.json({
         apiBaseUrl: process.env.VITE_API_BASE_URL,
@@ -210,6 +208,7 @@ async function startServer() {
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server running on: ${PORT}`);
     });
+    await initializeDatabase();
   } catch (error) {
     console.error("Failed to start server:", error);
   }
